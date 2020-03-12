@@ -3,7 +3,7 @@ import sys
 
 
 def decipher(txt):
-    if len(txt) < 100000 and re.findall(r"[\W|\d|_|A-Z]", txt) == []:
+    if len(txt) < 100000 and re.findall(r"[^a-z]+", txt) == []:
         res = ''
         i = 1
         while i < len(txt):
