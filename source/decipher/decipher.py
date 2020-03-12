@@ -1,9 +1,18 @@
 import re
 import sys
 
+MAX_TEXT_LENGTH = 100000
 
-def is_message(txt):
-    return len(txt) < 100000 and re.findall(r"[^a-z]+", txt) == []
+
+class ValidationError(Exception):
+    pass
+
+
+def validate_input(txt):
+    if len(txt) > MAX_TEXT_LENGTH or re.findall(r"[^a-z]+", txt.lower()):
+        raise ValidationError(
+            f"Text have to be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
+        )
 
 
 def is_identical_letter(txt, index):
@@ -11,19 +20,18 @@ def is_identical_letter(txt, index):
 
 
 def decipher(txt):
-    if is_message(txt):
-        res = []
-        i = 1
-        while i < len(txt):
-            if not is_identical_letter(txt, i):
-                res.append(txt[i - 1])
-                if i == len(txt) - 1:
-                    res.append(txt[i])
-                i = i + 1
-            else:
-                i = i + 2
-        return ''.join(res)
-    return 'This is a trapppp!'
+    validate_input(txt)
+    res = []
+    i = 1
+    while i < len(txt):
+        if not is_identical_letter(txt, i):
+            res.append(txt[i - 1])
+            if i == len(txt) - 1:
+                res.append(txt[i])
+            i = i + 1
+        else:
+            i = i + 2
+    return ''.join(res)
 
 
 input_txt = open(sys.argv[1])
