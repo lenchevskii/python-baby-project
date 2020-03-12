@@ -8,9 +8,9 @@ def decipher(txt):
         i = 1
         while i < len(txt):
             if txt[i] != txt[i - 1]:
-                res += ''.join(txt[i - 1])
+                res = ''.join([res, txt[i - 1]])
                 if i == len(txt) - 1:
-                    res += ''.join(txt[i])
+                    res = ''.join(res, [txt[i]])
                 i = i + 1
             else:
                 i = i + 2
