@@ -6,7 +6,7 @@ def is_message(txt):
     return len(txt) < 100000 and re.findall(r"[^a-z]+", txt) == []
 
 
-def is_identical_letters(txt, index):
+def is_identical_letter(txt, index):
     return txt[index] == txt[index - 1]
 
 
@@ -15,7 +15,7 @@ def decipher(txt):
         res = []
         i = 1
         while i < len(txt):
-            if not is_identical_letters(txt, i):
+            if not is_identical_letter(txt, i):
                 res.append(txt[i - 1])
                 if i == len(txt) - 1:
                     res.append(txt[i])
