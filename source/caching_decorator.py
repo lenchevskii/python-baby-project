@@ -1,3 +1,6 @@
+from source.baby_functions import factorial
+
+
 def cache_last(func, *size):
     cache_last.cache = dict()
 
@@ -11,8 +14,9 @@ def cache_last(func, *size):
     return memoized_func
 
 
-# cached_factorial = cache_last(factorial)
-# print(cached_factorial(10))
+cached_factorial = cache_last(factorial)
+print(cached_factorial(10))
+
 
 def return_text(txt):
     return txt
