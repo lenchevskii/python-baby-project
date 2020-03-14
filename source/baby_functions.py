@@ -52,9 +52,10 @@ def points_of_team(matches):
                                                   res.split(':'))), matches))))
 
 
-print(real_numbers_generator(10, 20, 1))
-print(factorial(10))
-print(comparison(list(range(-10, 20)), 5))
-print(accumulator_function('AvTj'))
-print(check_greeting('Hello I am Dima and this not a joke, just salut ccciao'))
-print(points_of_team(['3:4', '1:0', '3:3']))
+if __name__ == "__main__":
+    print(real_numbers_generator(10, 20, 1))
+    print(factorial(10))
+    print(comparison(list(range(-10, 20)), 5))
+    print(accumulator_function('AvTj'))
+    print(check_greeting('Hello I am Dima and this not a joke, just salut ccciao'))
+    print(points_of_team(['3:4', '1:0', '3:3']))

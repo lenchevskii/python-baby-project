@@ -1,4 +1,4 @@
-from source.baby_functions import factorial
+from baby_functions import factorial
 
 
 def cache_last(func, *size):
