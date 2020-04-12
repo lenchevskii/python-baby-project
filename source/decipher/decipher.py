@@ -38,4 +38,4 @@ input_txt = open(sys.argv[1])
 text = input_txt.read()
 input_txt.close()
 
-print('deciphered message:', decipher(text))
+print(decipher(text))
