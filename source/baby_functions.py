@@ -57,5 +57,5 @@ if __name__ == "__main__":
     print(factorial(10))
     print(comparison(list(range(-10, 20)), 5))
     print(accumulator_function('AvTj'))
-    print(check_greeting('Hello I am Dima and this not a joke, just salut ccciao'))
+    print(check_greeting('Hello I am Dima and this is not a joke, just salut ccciao'))
     print(points_of_team(['3:4', '1:0', '3:3']))
