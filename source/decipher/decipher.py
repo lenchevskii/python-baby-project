@@ -22,6 +22,7 @@ def validate_extention(file):
         raise ValidationError(
             f"File must have '.txt' extention"
     )
+    return file
 
 def is_identical_letter(txt, index):
     return txt[index] == txt[index - 1]
@@ -56,6 +57,6 @@ def get_cipher(file):
 
 
 if __name__ == "__main__":
-    
+
     validate_extention(FILE)
     print(decipher(get_cipher(FILE)))
