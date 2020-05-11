@@ -11,9 +11,15 @@ class ValidationError(Exception):
 def validate_input(txt):
     if len(txt) > MAX_TEXT_LENGTH or re.findall(r"[^a-z]+", txt):
         raise ValidationError(
-            f"Text have to be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
+            f"Text should be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
         )
 
+
+def validate_extention():
+    if not sys.argv[1].endswith('.txt'):
+        raise ValidationError(
+            f"File must have '.txt' extention"
+    )
 
 def is_identical_letter(txt, index):
     return txt[index] == txt[index - 1]
@@ -41,8 +47,11 @@ def decipher(txt):
     return ''.join(res)
 
 
-input_txt = open(sys.argv[1])
-text = input_txt.read()
-input_txt.close()
+if __name__ == "__main__":
+    validate_extention()
 
-print(decipher(text))
+    input_txt = open(sys.argv[1])
+    text = input_txt.read()
+    input_txt.close()
+
+    print(decipher(text))
