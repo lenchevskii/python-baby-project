@@ -19,6 +19,10 @@ def is_identical_letter(txt, index):
     return txt[index] == txt[index - 1]
 
 
+def is_last_letter(txt, index):
+    return index == len(txt) - 1
+
+
 def decipher(txt):
     validate_input(txt)
     res = []
@@ -26,11 +30,14 @@ def decipher(txt):
     while i < len(txt):
         if not is_identical_letter(txt, i):
             res.append(txt[i - 1])
-            if i == len(txt) - 1:
+            if is_last_letter(txt, i):
                 res.append(txt[i])
             i = i + 1
         else:
-            i = i + 2
+            i = i + 1
+            if is_last_letter(txt, i):
+                res.append(txt[i])
+            i = i + 1
     return ''.join(res)
 
 
