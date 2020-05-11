@@ -48,8 +48,8 @@ def comparator(xy):
 # cross lambda method
 def points_of_team(matches):
     return list(map(lambda xy: comparator(xy),
-                    list(map(lambda res: list(map(lambda parse: int(parse),
-                                                  res.split(':'))), matches))))
+                    map(lambda res: map(lambda parse: int(parse),
+                                        res.split(':')), matches)))
 
 
 if __name__ == "__main__":
