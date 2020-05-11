@@ -3,6 +3,7 @@ import sys
 
 MAX_TEXT_LENGTH = 100000
 
+FILE = sys.argv[1]
 
 class ValidationError(Exception):
     pass
@@ -13,10 +14,11 @@ def validate_input(txt):
         raise ValidationError(
             f"Text should be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
         )
+    return txt
 
 
-def validate_extention():
-    if not sys.argv[1].endswith('.txt'):
+def validate_extention(file):
+    if not file.endswith('.txt'):
         raise ValidationError(
             f"File must have '.txt' extention"
     )
@@ -30,7 +32,6 @@ def is_last_letter(txt, index):
 
 
 def decipher(txt):
-    validate_input(txt)
     res = []
     i = 1
     while i < len(txt):
@@ -47,11 +48,14 @@ def decipher(txt):
     return ''.join(res)
 
 
-if __name__ == "__main__":
-    validate_extention()
-
-    input_txt = open(sys.argv[1])
+def get_cipher(file):
+    input_txt = open(file)
     text = input_txt.read()
     input_txt.close()
+    return validate_input(text)
 
-    print(decipher(text))
+
+if __name__ == "__main__":
+    
+    validate_extention(FILE)
+    print(decipher(get_cipher(FILE)))
