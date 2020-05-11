@@ -8,9 +8,6 @@ class ValidationError(Exception):
     pass
 
 
-def validation_error(txt):
-    return f"Text have to be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
-
 def validate_input(txt):
     if len(txt) > MAX_TEXT_LENGTH or re.findall(r"[^a-z]+", txt):
         raise ValidationError(
