@@ -1,9 +1,11 @@
 import re
 import sys
+import unittest
 
 MAX_TEXT_LENGTH = 100000
 
 FILE = sys.argv[1]
+
 
 class ValidationError(Exception):
     pass
@@ -17,12 +19,13 @@ def validate_input(txt):
     return txt
 
 
-def validate_extention(file):
+def validate_extension(file):
     if not file.endswith('.txt'):
         raise ValidationError(
-            f"File must have '.txt' extention"
-    )
+            f"File must have '.txt' extension"
+        )
     return file
+
 
 def is_identical_letter(txt, index):
     return txt[index] == txt[index - 1]
@@ -57,6 +60,13 @@ def get_cipher(file):
 
 
 if __name__ == "__main__":
+    validate_extension(FILE)
+    decipher(get_cipher(FILE))
 
-    validate_extention(FILE)
-    print(decipher(get_cipher(FILE)))
+
+    class MyTest(unittest.TestCase):
+        def test(self):
+            self.assertEqual(decipher(get_cipher(FILE)), "edward")
+
+
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
