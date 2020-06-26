@@ -11,22 +11,20 @@ def fine_max(input_list):
 
 
 def compare(x, y):
-    if "{}{}".format(x, y) > "{}{}".format(y, x):
+    if f"{x}{y}" > f"{y}{x}":
         return -1
-    elif "{}{}".format(x, y) < "{}{}".format(y, x):
+    elif f"{x}{y}" < f"{y}{x}":
         return 1
-    else:
-        return 0
 
 
-def max_fine_recursion(input_list):
+def recursive_max(input_list):
     if not input_list:
         return []
     first, *tail = input_list
-    return max_fine_recursion([a for a in tail if "{}{}".format(a, first) > "{}{}".format(first, a)]) + [
-        first] + max_fine_recursion([a for a in tail if "{}{}".format(a, first) < "{}{}".format(first, a)])
+    return recursive_max([a for a in tail if f"{a}{first}" > f"{first}{a}"]) + [
+        first] + recursive_max([a for a in tail if f"{a}{first}" < f"{first}{a}"])
 
 
-print(max_fine_recursion([5299, 52]))
-print(max_fine_recursion([1234, 9]))
-print(max_fine_recursion([98, 9, 34]))
+print(fine_max([5299, 52]))
+print(recursive_max([1234, 9]))
+print(recursive_max([98, 9, 34]))
