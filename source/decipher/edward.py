@@ -1,6 +1,5 @@
 import re
 import sys
-import unittest
 
 MAX_TEXT_LENGTH = 100000
 
@@ -62,11 +61,3 @@ def get_cipher(file):
 if __name__ == "__main__":
     validate_extension(FILE)
     decipher(get_cipher(FILE))
-
-
-    class MyTest(unittest.TestCase):
-        def test(self):
-            self.assertEqual(decipher(get_cipher(FILE)), "edward")
-
-
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
