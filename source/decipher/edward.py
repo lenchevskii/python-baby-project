@@ -1,5 +1,7 @@
 import re
 import sys
+from functools import reduce
+from pathlib import PurePosixPath
 
 MAX_TEXT_LENGTH = 100000
 
@@ -21,7 +23,7 @@ def validate_input(txt):
 def validate_extension(file):
     if not file.endswith('.txt'):
         raise ValidationError(
-            f"File must have '.txt' extension"
+            f"File must have '.txt' extension, but got {PurePosixPath(file).suffix}"
         )
     return file
 
@@ -52,12 +54,14 @@ def decipher(txt):
 
 
 def get_cipher(file):
-    input_txt = open(file)
-    text = input_txt.read()
-    input_txt.close()
-    return validate_input(text)
+    with open(file) as text:
+        return validate_input(text.read())
+
+
+def compose(*fns):
+    return reduce(lambda f, g: lambda x: f(g(x)), fns, lambda x: x)
 
 
 if __name__ == "__main__":
-    validate_extension(FILE)
-    print(decipher(get_cipher(FILE)), end='')
+    message = compose(decipher, get_cipher, validate_extension)
+    print(message(FILE), end='')
