@@ -23,7 +23,7 @@ def validate_input(txt):
 def validate_extension(file):
     if not file.endswith('.txt'):
         raise ValidationError(
-            f"File must have '.txt' extension, but got {PurePosixPath(file).suffix}"
+            f"File must have '.txt' extension, but got '{PurePosixPath(file).suffix}'"
         )
     return file
 
