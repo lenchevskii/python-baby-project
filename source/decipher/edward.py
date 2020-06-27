@@ -60,4 +60,4 @@ def get_cipher(file):
 
 if __name__ == "__main__":
     validate_extension(FILE)
-    decipher(get_cipher(FILE))
+    print(decipher(get_cipher(FILE)), end='')
