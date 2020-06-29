@@ -64,4 +64,4 @@ def compose(*fns):
 
 if __name__ == "__main__":
     message = compose(decipher, get_cipher, validate_extension)(FILE)
-    print(message, end='')
+    print(message)

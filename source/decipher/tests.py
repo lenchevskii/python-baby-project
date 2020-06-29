@@ -4,12 +4,12 @@ import unittest
 
 class MyTest(unittest.TestCase):
     def test_case1(self):
-        expected_output = "edward"
+        expected_output = "edward\n"
         output = subprocess.run(['python3', 'edward.py', 'cipher1.txt'], stdout=subprocess.PIPE).stdout.decode('utf-8')
         self.assertEqual(output, expected_output)
 
     def test_case2(self):
-        expected_output = "edwardlenchevski"
+        expected_output = "edwardlenchevski\n"
         output = subprocess.run(['python3', 'edward.py', 'cipher2.txt'], stdout=subprocess.PIPE).stdout.decode('utf-8')
         self.assertEqual(output, expected_output)
 
