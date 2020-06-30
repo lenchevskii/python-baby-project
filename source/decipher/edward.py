@@ -55,7 +55,7 @@ def decipher(txt):
 
 def get_cipher(file):
     with open(file) as text:
-        return validate_input(text.read())
+        return text.read()
 
 
 def compose(*fns):
@@ -63,5 +63,5 @@ def compose(*fns):
 
 
 if __name__ == "__main__":
-    message = compose(decipher, get_cipher, validate_extension)(FILE)
+    message = compose(decipher, validate_input, get_cipher, validate_extension)(FILE)
     print(message)
