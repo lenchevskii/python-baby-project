@@ -8,24 +8,24 @@ MAX_TEXT_LENGTH = 100000
 FILE = sys.argv[1]
 
 
-class ValidationError(Exception):
-    pass
+# class ValidationError(Exception):
+#     pass
 
 
-def validate_input(txt):
-    if len(txt) > MAX_TEXT_LENGTH or re.findall(r"[^a-z]+", txt):
-        raise ValidationError(
-            f"Text should be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
-        )
-    return txt
+# def validate_input(txt):
+#     if len(txt) > MAX_TEXT_LENGTH or re.findall(r"[^a-z]+", txt):
+#         raise ValidationError(
+#             f"Text should be shorter than {MAX_TEXT_LENGTH} and include only [a-z]"
+#         )
+#     return txt
 
 
-def validate_extension(file):
-    if not file.endswith('.txt'):
-        raise ValidationError(
-            f"File must have '.txt' extension, but got '{PurePosixPath(file).suffix}'"
-        )
-    return file
+# def validate_extension(file):
+#     if not file.endswith('.txt'):
+#         raise ValidationError(
+#             f"File must have '.txt' extension, but got '{PurePosixPath(file).suffix}'"
+#         )
+#     return file
 
 
 def is_identical_letter(txt, index):
@@ -63,5 +63,5 @@ def compose(*fns):
 
 
 if __name__ == "__main__":
-    message = compose(decipher, validate_input, get_cipher, validate_extension)(FILE)
+    message = compose(decipher, get_cipher)(FILE)
     print(message)
